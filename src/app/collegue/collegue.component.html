@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="card-deck m-5">
+        <div class="card border-secondary mb-3">
+          <div class="card-header bg-transparent">
+            {{col.prenoms}}</div>
+          <div class="row no-gutters">
+            <img
+              src={{col.photoUrl}}
+              alt="..." width=25%>
+            <div class="card-body ml-auto">
+              <p class="card-text">Matricule : {{col.matricule}}</p>
+              <p class="card-text">Nom :  {{col.nom}}</p>
+              <p class="card-text">Prenom : {{col.prenoms}}</p>
+              <p class="card-text">Email : {{col.email}}</p>
+              <p class="card-text">Date de Naissance : {{col.dateDeNaissance | date:'mediumDate'}}</p>
+            </div>
+          </div>
+
+          <div class="container-fluid">
+              <div class="row justify-content-center">
+                <div class="col-5 offset-md-2">
+                    <a  (click)="ajoutCollegue()" class="nav-link " href="#">Ajouter un collegue</a>
+                </div>
+                <div class="col-4">
+                    <button (click)="collegueModifier()" type="button" class="btn btn-primary">Modifier</button>
+                </div>
+              </div>
+        </div>
+
+    </div>
+  </div>
+
+  <div class="row">
