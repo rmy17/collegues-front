@@ -1,0 +1,2 @@
+
+export let tableauMatricule:any = [{nom : "MACRON", matricule : "M01"},{nom : "MACRON", matricule : "M04"}, {nom : "DUPOND" , matricule:"M02"}, {nom : "DUPOND" , matricule:"M05"},{nom:"ODDET", matricule: "M03"},{nom:"ODDET", matricule: "M06"},{nom:"ODDET", matricule: "M07"}];

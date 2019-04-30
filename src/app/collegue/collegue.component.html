@@ -1,33 +1,65 @@
 <div class="row">
-    <div class="card-deck m-5">
-        <div class="card border-secondary mb-3">
-          <div class="card-header bg-transparent">
-            {{col.prenoms}}</div>
-          <div class="row no-gutters">
-            <img
-              src={{col.photoUrl}}
-              alt="..." width=25%>
-            <div class="card-body ml-auto">
-              <p class="card-text">Matricule : {{col.matricule}}</p>
-              <p class="card-text">Nom :  {{col.nom}}</p>
-              <p class="card-text">Prenom : {{col.prenoms}}</p>
-              <p class="card-text">Email : {{col.email}}</p>
-              <p class="card-text">Date de Naissance : {{col.dateDeNaissance | date:'mediumDate'}}</p>
+  <div class="card-deck m-5">
+    <div class="card border-secondary mb-3">
+      <div class="card-header bg-transparent">
+        {{col.prenoms}}</div>
+      <div class="row no-gutters">
+        <img src={{col.photoUrl}} alt="..." width=25%>
+        <div class="card-body ml-auto">
+          <p class="card-text">Matricule : {{col.matricule}}</p>
+          <p class="card-text">Nom : {{col.nom | uppercase}}</p>
+          <p class="card-text">Prenom : {{col.prenoms}}</p>
+
+
+          <div *ngIf="variable === false; else elseBlock">
+
+            <p [hidden]="variable" class="card-text">Date de Naissance : {{col.dateDeNaissance | date:'dd/MM/yyyy'}}
+            </p>
+            <p [hidden]="variable" class="card-text">Email : {{col.email}}</p>
+
+            <div class="container-fluid">
+              <div class="row justify-content-center">
+                <div class="col-5 offset-md-2">
+                  <a (click)="ajoutCollegue()" [hidden]="variable" class="nav-link " href="#">Ajouter un collegue</a>
+                </div>
+                <div class="col-4">
+                  <button (click)="variable=true" [hidden]="variable" type="button"
+                    class="btn btn-primary">Modifier</button>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="container-fluid">
-              <div class="row justify-content-center">
-                <div class="col-5 offset-md-2">
-                    <a  (click)="ajoutCollegue()" class="nav-link " href="#">Ajouter un collegue</a>
+            <ng-template #elseBlock>
+              
+              <form>
+                <div class="form-group row">
+                  <label for="exampleInputEmail1" class="col-sm-3 col-form-label">Email</label>
+                  <div class="col-sm-7">
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                      placeholder="Enter email">
+                  </div>
                 </div>
-                <div class="col-4">
-                    <button (click)="collegueModifier()" type="button" class="btn btn-primary">Modifier</button>
+                <div class="form-group row">
+                  <label for="exampleInputPassword1" class="col-sm-3 col-form-label">Photo URL</label>
+                  <div class="col-sm-7">
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                  </div>
                 </div>
-              </div>
+                <div class="row justify-content-end">
+                  <div class="col-4">
+                    <button type="submit" class="btn btn-primary">Valider</button>
+                  </div>
+                </div>
+              </form>
+            </ng-template>       
         </div>
+      </div>
+
 
     </div>
-  </div>
 
-  <div class="row">
+  </div>
+</div>
+
+<div class="row">

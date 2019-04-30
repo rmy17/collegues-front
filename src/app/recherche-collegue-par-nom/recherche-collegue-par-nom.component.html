@@ -1,0 +1,14 @@
+<form class="form-inline">
+  <div class="form-group mx-sm-3 mb-2">
+    <label for="inputPassword2">Recherche du nom</label>
+    <input type="text" #nomSaisie class="form-control" id="inputPassword2" >
+  </div>
+  <button (click)="rechercheParNom(nomSaisie.value)" type="submit" class="btn btn-primary mb-2">Recherche</button>
+</form>
+
+
+  <ul>
+<li *ngFor ="let co of tabResultat">{{co | json}}</li>
+  </ul>
+
+

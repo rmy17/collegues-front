@@ -9,6 +9,7 @@ import { Collegue } from '../models/Collegue';
 })
 export class CollegueComponent implements OnInit {
 
+  variable = false;
   @Input() col: Collegue;
   
   constructor() {

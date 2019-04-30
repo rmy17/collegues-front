@@ -6,6 +6,7 @@ import { collegueMock } from './mock/collegues.mock';
   template: `
 
     <app-collegue [col]="unObjetCollegueFourni"></app-collegue>
+    <app-recherche-collegue-par-nom><app-recherche-collegue-par-nom
   `,
   styles: []
 })
