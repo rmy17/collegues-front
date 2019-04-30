@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { collegueMock } from './mock/collegues.mock';
+import { DataService } from './services/data.service';
 
 @Component({
   selector: 'app-root',
@@ -26,7 +27,14 @@ import { collegueMock } from './mock/collegues.mock';
   `,
   styles: []
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'collegues-front';
-  unObjetCollegueFourni = collegueMock;
+  unObjetCollegueFourni;
+
+  constructor(private _srv : DataService){
+  }
+
+  ngOnInit() {
+    this.unObjetCollegueFourni = this._srv.recupererCollegueCourant();
+  }
 }
