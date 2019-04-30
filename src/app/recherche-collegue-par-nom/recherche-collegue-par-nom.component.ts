@@ -1,6 +1,5 @@
 import { Component, OnInit, Output, EventEmitter  } from '@angular/core';
 import { tableauMatricule } from '../mock/matricules.mock';
-import { ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -11,7 +10,6 @@ import { ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 export class RechercheCollegueParNomComponent implements OnInit {
 
   tabResultat = [];
-  modal = "";
   constructor() { }
 
   ngOnInit() {
@@ -20,14 +18,13 @@ export class RechercheCollegueParNomComponent implements OnInit {
   @Output() change:EventEmitter<string> = new EventEmitter<string>()
 
   rechercheParNom(nomSaisie:string){
+    console.log(nomSaisie);
     for (let col of tableauMatricule){
-      
-      if (col.nom === (nomSaisie.toUpperCase)){
+      console.log ("passe for");
+      if (col.nom === nomSaisie.toUpperCase()){
+        console.log ("passe");
         this.tabResultat.push(col);
       }
-    }
-    if (this.tabResultat.length === 0){
-      this.modal;
     }
   }
 
