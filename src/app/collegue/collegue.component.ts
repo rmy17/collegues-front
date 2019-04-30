@@ -1,5 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { collegueMock } from "../mock/Collegues.mock"
+import { Component, OnInit, Input } from '@angular/core';
 import { Collegue } from '../models/Collegue';
 
 @Component({
