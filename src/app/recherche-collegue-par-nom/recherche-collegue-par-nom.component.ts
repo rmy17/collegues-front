@@ -19,13 +19,9 @@ export class RechercheCollegueParNomComponent implements OnInit {
 
   rechercheParNom(nomSaisie:string){
     console.log(nomSaisie);
-    for (let col of tableauMatricule){
-      console.log ("passe for");
-      if (col.nom === nomSaisie.toUpperCase()){
-        console.log ("passe");
-        this.tabResultat.push(col);
-      }
-    }
+    tableauMatricule.filter(c => c.nom === nomSaisie.toUpperCase()).forEach(col => {
+      this.tabResultat.push(col);
+    });
   }
 
 }
