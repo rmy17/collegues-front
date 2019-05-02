@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Collegue } from '../models/Collegue';
-
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-collegue',
@@ -12,10 +12,13 @@ export class CollegueComponent implements OnInit {
   variable = false;
   @Input() col: Collegue;
   
-  constructor() {
+  constructor(private _serv : DataService) {
    }
 
   ngOnInit() {
+    this._serv.recupererCollegueCourant().subscribe(collegue =>{
+      this.col =  collegue;
+    });
   }
 
   ajoutCollegue(){
@@ -26,5 +29,7 @@ export class CollegueComponent implements OnInit {
     
       console.log(`Modification du collègue ${this.col.nom}`);
   }
+
+ 
 
 }

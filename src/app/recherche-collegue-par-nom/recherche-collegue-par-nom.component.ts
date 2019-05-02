@@ -10,6 +10,7 @@ import { DataService } from '../services/data.service';
 export class RechercheCollegueParNomComponent implements OnInit {
 
   tabResultat = [];
+  message=""
   constructor(private _srv : DataService) { }
 
   ngOnInit() {
@@ -18,7 +19,20 @@ export class RechercheCollegueParNomComponent implements OnInit {
   @Output() change:EventEmitter<string> = new EventEmitter<string>()
 
   rechercheParNom(nomSaisie:string){
-    this.tabResultat = this._srv.rechercheParNom(nomSaisie);
+    this._srv.rechercheParNom(nomSaisie).subscribe(
+      (tableauMatricule:any) => {
+        this.tabResultat = tableauMatricule;
+      },
+      (error:any) =>{
+        this.message = "La recherche à échouer"
+      }
+    );
   }
-
+  
+  //Etape I : recupere matricule quand click 
+  recupererCollegueCourant(matricule:string){
+    this._srv.publish(matricule).subscribe(col => {}, err => {
+      this.message = "Le matricule n'a pu etre recuperé"
+    });
+  }
 }

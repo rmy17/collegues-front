@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  urlRecupNom : "https://remvia-collegues-api.herokuapp.com/collegues"
 };

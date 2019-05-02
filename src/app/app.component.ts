@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { collegueMock } from './mock/collegues.mock';
+
 import { DataService } from './services/data.service';
 
 @Component({
@@ -18,7 +18,7 @@ import { DataService } from './services/data.service';
   <app-recherche-collegue-par-nom></app-recherche-collegue-par-nom>
   </div>
   <div class="col-6">
-  <app-collegue [col]="unObjetCollegueFourni"></app-collegue>
+  <app-collegue></app-collegue>
   </div>
 </div>
 </div>
@@ -31,10 +31,9 @@ export class AppComponent implements OnInit{
   title = 'collegues-front';
   unObjetCollegueFourni;
 
-  constructor(private _srv : DataService){
+  constructor(private _dataSrv : DataService){
   }
 
   ngOnInit() {
-    this.unObjetCollegueFourni = this._srv.recupererCollegueCourant();
   }
 }

@@ -8,5 +8,6 @@
 
 
 <ul>
-  <li *ngFor="let co of tabResultat">{{co | json}}</li>
+  <button (click)="recupererCollegueCourant(matricule)" type="button" class="btn btn-primary btn-lg btn-block col-6 m-5" *ngFor="let matricule of tabResultat" >{{matricule}}</button>
 </ul>
+
