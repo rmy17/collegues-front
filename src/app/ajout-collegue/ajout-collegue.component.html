@@ -61,14 +61,16 @@
                     </p>
                   </div>
                 </div>
-                <div class="row justify-content-end">
+                <div class="row justify-content-around">
+                    <div class="col-4">
+                        <button (click)="annuler()" type="submit" class="btn btn-primary" >Annuler</button>
+                      </div>
                   <div class="col-4">
                     <div *ngIf="formulaireCollegue.invalid; else elseBlock">
                       <button type="submit" class="btn btn-primary" disabled>Créer</button>
                     </div>
                     <ng-template #elseBlock>
                       <button (click)="submit()" type="submit" class="btn btn-primary">Créer</button>
-                      <p>{{message}}</p>
                     </ng-template>
                   </div>
                 </div>

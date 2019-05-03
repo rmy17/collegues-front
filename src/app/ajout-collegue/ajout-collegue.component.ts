@@ -10,8 +10,9 @@ import { DataService } from '../services/data.service';
 export class AjoutCollegueComponent implements OnInit {
 
   message="";
-  @Output() retourAfficheCollegue = new EventEmitter<boolean>()
-  @Output() messageErreur = new EventEmitter<string>()
+  @Output() retourAfficheCollegue = new EventEmitter<boolean>();
+  @Output() messageErreur = new EventEmitter<string>();
+  @Output() annul = new EventEmitter<boolean>();
 
   col = new Collegue("","","","",new Date(),"");
 
@@ -20,14 +21,17 @@ export class AjoutCollegueComponent implements OnInit {
   ngOnInit() {
   }
 
+  annuler(){
+    this.annul.emit(false);
+  }
+
   submit(){
     this._serv.envoyeCollegue(this.col).subscribe( () => {}, err => {
       this.message = err.error;
       this.retourAfficheCollegue.emit(false);
       this.messageErreur.emit(this.message);
+      
     });
-    
-    
   }
 
 }

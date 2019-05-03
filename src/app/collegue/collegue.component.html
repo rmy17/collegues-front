@@ -1,4 +1,3 @@
-
 <div *ngIf="ajoutClient === false; else addClient">
   <div class="row">
     <div class="card-deck m-5">
@@ -58,7 +57,10 @@
                   </p>
                 </div>
               </div>
-              <div class="row justify-content-end">
+              <div class="row justify-content-around">
+                  <div class="col-4">
+                      <button (click)="variable=false" type="submit" class="btn btn-primary" >Annuler</button>
+                    </div>
                 <div class="col-4">
                   <div *ngIf="formulaireCollegue.invalid; else buttonAcces">
                     <button type="submit" class="btn btn-primary" disabled>Valider</button>
@@ -79,5 +81,5 @@
 </div>
 {{message}}
 <ng-template #addClient>
-  <app-ajout-collegue (retourAfficheCollegue)="ajoutClient=$event"  (messageErreur)="message=$event"></app-ajout-collegue>
+  <app-ajout-collegue (retourAfficheCollegue)="ajoutClient=$event"  (messageErreur)="message=$event" (annul)="ajoutClient=$event"></app-ajout-collegue>
 </ng-template>

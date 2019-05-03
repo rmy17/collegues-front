@@ -10,7 +10,7 @@ import { CollegueAModifier } from '../models/CollegueAModifier';
 })
 export class CollegueComponent implements OnInit {
 
-  @Input ()message = "a";
+  message = "";
   ajoutClient = false;
   variable = false;
   booleanButton = false;
@@ -40,7 +40,8 @@ export class CollegueComponent implements OnInit {
     this.collegueAModifier.email = this.col.email;
     this.collegueAModifier.photoUrl = this.col.photoUrl;
     this._serv.envoyeCollegueModifier(this.collegueAModifier, this.col.matricule).subscribe(colAModif => {}, error => {
-      this.message =`Oops ${error}`;
+      this.message =`Oops ${error.error}`;
+      console.log(error)
     });
     this.variable = false;
   }
