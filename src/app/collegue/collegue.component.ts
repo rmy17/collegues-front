@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Collegue } from '../models/Collegue';
 import { DataService } from '../services/data.service';
+import { CollegueAModifier } from '../models/CollegueAModifier';
 
 @Component({
   selector: 'app-collegue',
@@ -9,8 +10,12 @@ import { DataService } from '../services/data.service';
 })
 export class CollegueComponent implements OnInit {
 
+  @Input ()message = "a";
+  ajoutClient = false;
   variable = false;
-  @Input() col: Collegue;
+  booleanButton = false;
+  col = new Collegue("","","","",new Date(),"");
+  collegueAModifier = new CollegueAModifier("","");
   
   constructor(private _serv : DataService) {
    }
@@ -23,6 +28,7 @@ export class CollegueComponent implements OnInit {
 
   ajoutCollegue(){
     console.log(`Création d'un nouveau collègue`);
+    this.ajoutClient=true;
   }
 
   collegueModifier() {
@@ -30,6 +36,12 @@ export class CollegueComponent implements OnInit {
       console.log(`Modification du collègue ${this.col.nom}`);
   }
 
- 
-
+  submit(){
+    this.collegueAModifier.email = this.col.email;
+    this.collegueAModifier.photoUrl = this.col.photoUrl;
+    this._serv.envoyeCollegueModifier(this.collegueAModifier, this.col.matricule).subscribe(colAModif => {}, error => {
+      this.message =`Oops ${error}`;
+    });
+    this.variable = false;
+  }
 }

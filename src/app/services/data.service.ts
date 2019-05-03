@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Collegue } from '../models/Collegue';
+import { CollegueAModifier } from '../models/CollegueAModifier';
 import { collegueMock } from '../mock/collegues.mock';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -45,10 +46,18 @@ export class DataService {
               return col;
             }),*/
             tap (col => this.subject.next(col))
-          )
+          );
 
 }
  recupererCollegueCourant(): Observable<Collegue>{
    return this.subject.asObservable();
+ }
+
+ envoyeCollegueModifier(collegueAModifier:CollegueAModifier,matricule:string): Observable<CollegueAModifier>{
+   return this._http.patch<CollegueAModifier>(`${environment.urlRecupNom}/${matricule}`,collegueAModifier);
+ }
+
+ envoyeCollegue(collegue:Collegue){
+   return this._http.post(`${environment.urlRecupNom}`,collegue);
  }
 }

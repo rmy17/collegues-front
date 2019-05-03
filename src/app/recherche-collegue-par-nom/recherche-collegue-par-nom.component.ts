@@ -31,7 +31,7 @@ export class RechercheCollegueParNomComponent implements OnInit {
   
   //Etape I : recupere matricule quand click 
   recupererCollegueCourant(matricule:string){
-    this._srv.publish(matricule).subscribe(col => {}, err => {
+    this._srv.publish(matricule).subscribe(mat => {}, err => {
       this.message = "Le matricule n'a pu etre recuperé"
     });
   }

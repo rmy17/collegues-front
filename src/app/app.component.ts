@@ -16,6 +16,7 @@ import { DataService } from './services/data.service';
   <div class="row justify-content-center">
   <div class="col-6">
   <app-recherche-collegue-par-nom></app-recherche-collegue-par-nom>
+ 
   </div>
   <div class="col-6">
   <app-collegue></app-collegue>

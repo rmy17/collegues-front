@@ -1,0 +1,80 @@
+<div class="row">
+    <div class="card-deck m-5">
+      <div class="card border-secondary mb-3">
+        <div class="card-header bg-transparent">
+          {{col.prenoms}}</div>
+        <div class="row no-gutters">
+          <img src={{col.photoUrl}} alt="..." width=25%>
+          <div class="card-body ml-auto">
+              <form  #formulaireCollegue="ngForm">
+                  <div class="form-group row">
+                      <label for="nom" class="col-sm-3 col-form-label">Nom</label>
+                      <div class="col-sm-7">
+                        <input type="text" class="form-control" id="nom" name="nom"
+                           [(ngModel)]=col.nom
+                          #nom="ngModel" required>
+                        <p *ngIf="nom.dirty && nom.invalid">
+                          Ce champ est invalide !
+                        </p>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="prenoms" class="col-sm-3 col-form-label">Prenom</label>
+                        <div class="col-sm-7">
+                          <input type="text" class="form-control" id="prenoms" name="prenoms"
+                             [(ngModel)]=col.prenoms
+                            #prenoms="ngModel" required>
+                          <p *ngIf="prenoms.dirty && prenoms.invalid">
+                            Ce champ est invalide !
+                          </p>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                          <label for="dateNaissance" class="col-sm-3 col-form-label">Date de naissance</label>
+                          <div class="col-sm-7">
+                            <input type="date" class="form-control" id="dateNaissance" name="dateNaissance"
+                              [(ngModel)]=col.dateDeNaissance
+                              #dateNaissance="ngModel" required>
+                            <p *ngIf="dateNaissance.dirty && dateNaissance.invalid">
+                              Ce champ est invalide !
+                            </p>
+                          </div>
+                        </div>
+                <div class="form-group row">
+                  <label for="exampleInputEmail1" class="col-sm-3 col-form-label">Email</label>
+                  <div class="col-sm-7">
+                    <input type="email" class="form-control" id="exampleInputEmail1" name="email"
+                       [(ngModel)]=col.email
+                      #email="ngModel" required>
+                    <p *ngIf="email.dirty && email.invalid">
+                      Ce champ est invalide !
+                    </p>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="urlPhoto" class="col-sm-3 col-form-label">Photo URL</label>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control" [(ngModel)]=col.photoUrl #urlPhoto="ngModel"
+                      name="urlPhoto" id="urlPhoto" required minlength="7">
+                    <p *ngIf="urlPhoto.dirty && urlPhoto.invalid">
+                      Ce champ est invalide !
+                    </p>
+                  </div>
+                </div>
+                <div class="row justify-content-end">
+                  <div class="col-4">
+                    <div *ngIf="formulaireCollegue.invalid; else elseBlock">
+                      <button type="submit" class="btn btn-primary" disabled>Créer</button>
+                    </div>
+                    <ng-template #elseBlock>
+                      <button (click)="submit()" type="submit" class="btn btn-primary">Créer</button>
+                      <p>{{message}}</p>
+                    </ng-template>
+                  </div>
+                </div>
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
