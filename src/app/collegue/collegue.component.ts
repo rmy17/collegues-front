@@ -14,7 +14,7 @@ export class CollegueComponent implements OnInit {
   ajoutClient = false;
   variable = false;
   booleanButton = false;
-  col = new Collegue("","","","",new Date(),"");
+  col = new Collegue("","","","",undefined,"");
   collegueAModifier = new CollegueAModifier("","");
   
   constructor(private _serv : DataService) {
