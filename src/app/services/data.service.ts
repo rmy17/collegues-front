@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable, Subject, Subscription } from 'rxjs';
 import {map, tap} from 'rxjs/operators';
+import { ColleguePhoto } from '../models/colleguePhoto';
 
 
 @Injectable({
@@ -49,6 +50,12 @@ export class DataService {
           );
 
 }
+
+recupPhoto(): Observable<ColleguePhoto>{
+  return this._http.get<ColleguePhoto>(`${environment.urlRecupNom}/photos`);
+}
+
+
  recupererCollegueCourant(): Observable<Collegue>{
    return this.subject.asObservable();
  }

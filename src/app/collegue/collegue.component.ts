@@ -15,6 +15,7 @@ export class CollegueComponent implements OnInit {
   variable = false;
   booleanButton = false;
   col = new Collegue("","","","",undefined,"");
+  
   collegueAModifier = new CollegueAModifier("","");
   
   constructor(private _serv : DataService) {
@@ -23,7 +24,9 @@ export class CollegueComponent implements OnInit {
   ngOnInit() {
     this._serv.recupererCollegueCourant().subscribe(collegue =>{
       this.col =  collegue;
+      this.collegueAModifier = new CollegueAModifier (this.col.email, this.col.photoUrl);
     });
+
   }
 
   ajoutCollegue(){
@@ -45,4 +48,18 @@ export class CollegueComponent implements OnInit {
     });
     this.variable = false;
   }
+
+  retablirEmail(retablir:boolean){
+    if(retablir===true){
+      this.collegueAModifier.email = this.col.email;
+    }
+  } 
+
+  retablirUrl(retablir:boolean){
+    if(retablir === true){
+      this.collegueAModifier.photoUrl = this.col.photoUrl;
+    }
+  }
+
+  
 }

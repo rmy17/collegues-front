@@ -7,21 +7,31 @@ import { CollegueComponent } from './collegue/collegue.component';
 import { RechercheCollegueParNomComponent } from './recherche-collegue-par-nom/recherche-collegue-par-nom.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AjoutCollegueComponent } from './ajout-collegue/ajout-collegue.component';
+import { EmailValidatorDirective } from './validators/email-validator.directive';
+import { ROUTES } from './app.routes';
+import { RouterModule } from '@angular/router';
+import { AccueilComponent } from './accueil/accueil.component';
+import { GallerieComponent } from './gallerie/gallerie.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CollegueComponent,
     RechercheCollegueParNomComponent,
-    AjoutCollegueComponent
-   
+    AjoutCollegueComponent,
+    EmailValidatorDirective,
+    AccueilComponent,
+    GallerieComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
     NgbModule,
     FormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(ROUTES)
   ],
   providers: [],
   bootstrap: [AppComponent]
