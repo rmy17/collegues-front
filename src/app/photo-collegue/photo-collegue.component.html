@@ -3,10 +3,23 @@
     <img src="{{col.photoUrl}}" class="img-fluid img-thumbnail justify-align-center mx-auto d-block" />
   </div>
   <div class="col-12 mx-auto d-block align-small text-center">
-    <label>Matricule :</label> {{col.matricule}} <br/>
-    <label>Nom :</label> {{col.nom | uppercase}}<br/>
-    <label>Prenoms :</label> {{col.prenoms | lowercase}} <br/>
-    <label>Date De Naissance :</label> {{col.dateDeNaissance | date:'longDate'}} <br/>
-    <label>Email :</label> {{col.email}} <br/>
+    <label>Matricule :</label> {{col.matricule}} <br />
+    <label>Nom :</label> {{col.nom | uppercase}}<br />
+    <label>Prenoms :</label> {{col.prenoms | lowercase}} <br />
+    <label>Date De Naissance :</label> {{col.dateDeNaissance | date:'dd/MM/yyyy'}} <br />
+    <label>Email :</label> {{col.email}} <br />
+
+
+    <div class="form-group">
+      <textarea (keypress)="pressEnter($event)" [(ngModel)]="texte"  class="form-control"
+        id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+
+
+    <div *ngFor="let note of tabNote">
+      {{note.Date}}
+      {{note.texte}}
+    </div>
+
   </div>
 </div>

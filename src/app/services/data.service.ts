@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
 import { Observable, Subject, Subscription } from 'rxjs';
 import {map, tap} from 'rxjs/operators';
 import { ColleguePhoto } from '../models/colleguePhoto';
+import { Note } from '../models/Note';
 
 
 @Injectable({
@@ -67,4 +68,14 @@ recupPhoto(): Observable<ColleguePhoto>{
  envoyeCollegue(collegue:Collegue){
    return this._http.post(`${environment.urlRecupNom}`,collegue);
  }
+
+ evoyerNote(text:string, matricule:string){
+   return this._http.post<Note>(`${environment.urlRecupNom}/${matricule}/notes`,text);
+ }
+
+ recupNote(matricule:string): Observable<Note>{
+   return this._http.get<Note>(`${environment.urlRecupNom}/${matricule}/notes`);
+ }
+
+
 }
