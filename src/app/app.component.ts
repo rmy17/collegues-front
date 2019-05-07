@@ -23,7 +23,7 @@ import { DataService } from './services/data.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private _dataSrv: DataService) {
+  constructor() {
   }
 
   ngOnInit() {

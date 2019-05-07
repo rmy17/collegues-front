@@ -13,6 +13,7 @@ import { RouterModule } from '@angular/router';
 import { AccueilComponent } from './accueil/accueil.component';
 import { GallerieComponent } from './gallerie/gallerie.component';
 import { MenuComponent } from './menu/menu.component';
+import { PhotoCollegueComponent } from './photo-collegue/photo-collegue.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { MenuComponent } from './menu/menu.component';
     AccueilComponent,
     GallerieComponent,
     MenuComponent,
+    PhotoCollegueComponent
   ],
   imports: [
     BrowserModule,

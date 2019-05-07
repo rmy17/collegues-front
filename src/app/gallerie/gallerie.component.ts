@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ColleguePhoto } from '../models/colleguePhoto';
 import { DataService } from '../services/data.service';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Collegue } from '../models/Collegue';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-gallerie',
@@ -10,7 +13,7 @@ import { DataService } from '../services/data.service';
 export class GallerieComponent implements OnInit {
 
   colleguePhoto = new ColleguePhoto("","");
-  tabcolleguesPhoto;
+  tabcolleguesPhoto: ColleguePhoto;
 
   constructor(private _serv : DataService) { }
 
@@ -18,6 +21,5 @@ export class GallerieComponent implements OnInit {
     this._serv.recupPhoto().subscribe(colPhoto => {this.tabcolleguesPhoto=colPhoto;},err => {});
   }
 
-  
 }
 
