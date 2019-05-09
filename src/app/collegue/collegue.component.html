@@ -23,8 +23,8 @@
               <div class="container-fluid">
                 <div class="row justify-content-center">
                   <div class="col-5 offset-md-2">
-                    <a (click)="ajoutCollegue()" [hidden]="variable" class="nav-link " href="#">Ajouter un
-                      collegue</a>
+                    <button type="button" (click)="ajoutCollegue()" [hidden]="variable" class="btn btn-link">Ajouter un
+                      collegue</button>
                   </div>
                   <div class="col-4">
                     <button (click)="variable=true" [hidden]="variable" type="button"
@@ -33,49 +33,50 @@
                 </div>
               </div>
             </div>
-          </div>
-          <ng-template #elseBlock>
 
-            <form #formulaireCollegue="ngForm">
-              <div class="form-group row">
-                <label for="exampleInputEmail1" class="col-sm-3 col-form-label">Email</label>
-                <div class="col-sm-7">
-                  <input appEmailValidator type="email" class="form-control" id="exampleInputEmail1" name="email"
-                    aria-describedby="emailHelp" [(ngModel)]="collegueAModifier.email" #email="ngModel" required (change)="retablirEmail(email.invalid)">
-                    <div *ngIf="email.dirty && email.invalid" >
-                    Ce champ est invalide !
-                    <div  *ngIf="email.errors && email.value != col.email">
-                      {{ email.errors.emailExistant }}
+            <ng-template #elseBlock>
+
+              <form #formulaireCollegue="ngForm">
+                <div class="form-group row">
+                  <label for="exampleInputEmail1" class="col-sm-3 col-form-label">Email</label>
+                  <div class="col-sm-7">
+                    <input appEmailValidator type="email" class="form-control" id="exampleInputEmail1" name="email"
+                      aria-describedby="emailHelp" [(ngModel)]="collegueAModifier.email" #email="ngModel" required
+                      (change)="retablirEmail(email.invalid)">
+                    <div *ngIf="email.dirty && email.invalid">
+                      Ce champ est invalide !
+                      <div *ngIf="email.errors && email.value != col.email">
+                        {{ email.errors.emailExistant }}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="form-group row">
-                <label for="urlPhoto" class="col-sm-3 col-form-label">Photo URL</label>
-                <div class="col-sm-7">
-                  <input type="text" class="form-control" [(ngModel)]=collegueAModifier.photoUrl #urlPhoto="ngModel" name="urlPhoto"
-                    id="urlPhoto" required minlength="7" (change)="retablirUrl(urlPhoto.invalid)">
-                  <p *ngIf="urlPhoto.dirty && urlPhoto.invalid">
-                    Ce champ est invalide !
-                  </p>
-                </div>
-              </div>
-              <div class="row justify-content-around">
-                <div class="col-4">
-                  <button (click)="variable=false" type="submit" class="btn btn-primary">Annuler</button>
-                </div>
-                <div class="col-4">
-                  <div *ngIf="formulaireCollegue.invalid; else buttonAcces">
-                    <button type="submit" class="btn btn-primary" disabled>Valider</button>
+                <div class="form-group row">
+                  <label for="urlPhoto" class="col-sm-3 col-form-label">Photo URL</label>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control" [(ngModel)]=collegueAModifier.photoUrl #urlPhoto="ngModel"
+                      name="urlPhoto" id="urlPhoto" required minlength="7" (change)="retablirUrl(urlPhoto.invalid)">
+                    <p *ngIf="urlPhoto.dirty && urlPhoto.invalid">
+                      Ce champ est invalide !
+                    </p>
                   </div>
-                  <ng-template #buttonAcces>
-                    <button (click)="submit()" type="submit" class="btn btn-primary">Valider</button>
-                  </ng-template>
                 </div>
-              </div>
-            </form>
-          </ng-template>
-
+                <div class="row justify-content-around">
+                  <div class="col-4">
+                    <button (click)="variable=false" type="submit" class="btn btn-primary">Annuler</button>
+                  </div>
+                  <div class="col-4">
+                    <div *ngIf="formulaireCollegue.invalid; else buttonAcces">
+                      <button type="submit" class="btn btn-primary" disabled>Valider</button>
+                    </div>
+                    <ng-template #buttonAcces>
+                      <button (click)="submit()" type="submit" class="btn btn-primary">Valider</button>
+                    </ng-template>
+                  </div>
+                </div>
+              </form>
+            </ng-template>
+          </div>
         </div>
 
       </div>
@@ -83,6 +84,7 @@
   </div>
 </div>
 {{message}}
+
 <ng-template #addClient>
   <app-ajout-collegue (retourAfficheCollegue)="ajoutClient=$event" (messageErreur)="message=$event"
     (annul)="ajoutClient=$event"></app-ajout-collegue>

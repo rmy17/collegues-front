@@ -14,6 +14,7 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { GallerieComponent } from './gallerie/gallerie.component';
 import { MenuComponent } from './menu/menu.component';
 import { PhotoCollegueComponent } from './photo-collegue/photo-collegue.component';
+import { AuthentificationComponent } from './authentification/authentification.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { PhotoCollegueComponent } from './photo-collegue/photo-collegue.componen
     AccueilComponent,
     GallerieComponent,
     MenuComponent,
-    PhotoCollegueComponent
+    PhotoCollegueComponent,
+    AuthentificationComponent
   ],
   imports: [
     BrowserModule,
