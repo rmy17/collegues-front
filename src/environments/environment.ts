@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  urlRecupNom : "http://localhost:8080/collegues"
+  urlRecupNom : "http://localhost:8080/collegues",
+  urlServ : "http://localhost:8080"
 };
 
 /*

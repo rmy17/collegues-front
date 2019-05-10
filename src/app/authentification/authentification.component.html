@@ -1,3 +1,34 @@
-<p>
-  authentification works!
-</p>
+<div class="container-fluid mt-5">
+  <div class="row justify-content-center">
+    <div class="row-12">
+      <h1>Page d'authentification !</h1>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt-2">
+  <div class="row justify-content-center">
+    <form #formulaireAuth="ngForm">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Adresse Mail</label>
+        <input type="email" [(ngModel)]="infoAuth.email" name=email class="form-control" id="exampleInputEmail1"
+          aria-describedby="emailHelp" placeholder="Entrer votre email" required>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Mot de passe</label>
+        <input type="password" name=motDePasse [(ngModel)]="infoAuth.motDePasse" class="form-control"
+          id="exampleInputPassword1" placeholder="Mot de passe" required>
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+      </div>
+      <div *ngIf="formulaireAuth.invalid; else blockAuth">
+        <button type="submit" class="btn btn-primary" disabled>Valider</button>
+      </div>
+      <ng-template #blockAuth>
+        <button type="submit" (click)="infoAuthentification()" class="btn btn-primary">Valider</button>
+      </ng-template>
+    </form>
+  </div>
+</div>
